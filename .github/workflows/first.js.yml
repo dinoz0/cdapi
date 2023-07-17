@@ -26,9 +26,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: action/checkout@v3
+        uses: actions/checkout@v3
       - name: Setup node
-        uses: action/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 18.x
         - run: echo Hello World      
