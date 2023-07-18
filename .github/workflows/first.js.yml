@@ -49,7 +49,7 @@ jobs:
   #         node-version: 18.x
   #     - run: echo Hello World
   docker:
-    if: github.ref == 'refs/heads/main '
+    if: github.ref == 'refs/heads/main'
     needs: [routage]
     uses: ./.github/workflows/docker.js.yml
     secrets: inherit
