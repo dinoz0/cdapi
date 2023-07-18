@@ -8,7 +8,7 @@ on:
     
 jobs:
   update:
-    if: ${{ github.event.workflow_run.conclusion == "success" }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Update Docker Container
     runs-on: ubuntu-latest
 
