@@ -52,7 +52,6 @@ jobs:
     secrets: inherit
 
 
-on:
   push:
     branches: ["dev"]
 
