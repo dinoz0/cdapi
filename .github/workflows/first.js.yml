@@ -2,7 +2,10 @@ name: First CI
 
 on:
   push:
-    branches: ["main"]
+    branches: 
+      - main
+      - dev
+
 
 jobs:
   test:
@@ -46,33 +49,14 @@ jobs:
   #         node-version: 18.x
   #     - run: echo Hello World
   docker:
-    if: ${{ !contains(github.event.head_commit.message, '#pm2')}}
+    if: ${{ github.head_ref == "main")}}
     needs: [routage]
     uses: ./.github/workflows/docker.js.yml
     secrets: inherit
 
-
-  push:
-    branches: ["dev"]
-
-jobs:
-  test:
-    if: ${{ !contains(github.event.head_commit.message, '#code')}}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with: 
-          node-version: 18.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Run test
-        run: npm test
-
+  
 
   pm2:
-    if: ${{ contains(github.event.head_commit.message, '#pm2')}}
+    if: ${{ github.head_ref == "dev")}}
     needs: [routage]
     uses: ./.github/workflows/deploy.js.yml
